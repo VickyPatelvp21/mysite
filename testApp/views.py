@@ -1,7 +1,9 @@
 from django.shortcuts import render
-
+from .models import Member
 # Create your views here.
 
 
 def index(request):
-    return render(request,"testApp/index.html")
+    members=Member.objects.all()
+    context={"members":members}
+    return render(request,"testApp/index.html",context)

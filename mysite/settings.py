@@ -13,6 +13,7 @@ import os.path
 import urllib
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,9 +26,10 @@ SECRET_KEY = 'django-insecure-#ryby#e=#w0p=hs3edivxpt3rt=6lmw*+zc)81!(fclhx#wzfl
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ORIGIN_ALLOW_ALL = True
 
-ALLOWED_HOSTS = ['vicky817.pythonanywhere.com','localhost',"0.0.0.0",'192.168.0.143', "*" ]
-
+ALLOWED_HOSTS = ['vicky817.pythonanywhere.com','localhost',"0.0.0.0",'192.168.0.143',"127.0.0.1"]
+CORS_ALLOWED_ORIGINS = ['http://vicky817.pythonanywhere.com']
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +51,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
